@@ -5,7 +5,7 @@ export UBUNTU_VERSION ?= 20.04
 
 export VAGRANT_CLIENT_RAM ?= 1024
 export VAGRANT_CLIENT_CPUS ?= 1
-export VAGRANT_SERVER_RAM ?= 512
+export VAGRANT_SERVER_RAM ?= 1024 #512
 export VAGRANT_SERVER_CPUS ?= 1
 
 export VAULT_UNSEAL_KEY ?= "INSERT-VAULT-UNSEAL-KEY"
@@ -86,7 +86,7 @@ unseal:
 # https://www.nomadproject.io/docs/job-specification/artifact#download-using-git
 #
 ssh:
-	bolt command run "sudo mkdir -p /root/.ssh" --targets=us --run-as root
-	bolt command run "ssh-keyscan github.com | sudo tee -a /root/.ssh/known_hosts" --targets=us --run-as root
-	bolt command run "ssh-keyscan bitbucket.org | sudo tee -a /root/.ssh/known_hosts" --targets=us --run-as root
+	bolt command run "sudo mkdir -p /root/.ssh" --targets=ap --run-as root
+	bolt command run "ssh-keyscan github.com | sudo tee -a /root/.ssh/known_hosts" --targets=ap --run-as root
+	bolt command run "ssh-keyscan bitbucket.org | sudo tee -a /root/.ssh/known_hosts" --targets=ap --run-as root
 

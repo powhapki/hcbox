@@ -1,5 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+#
 
 Vagrant.configure(2) do |config|
 
@@ -13,6 +14,7 @@ Vagrant.configure(2) do |config|
     config.vm.define "node-server-#{i}" do |node|
       node.vm.hostname = "node-server-#{i}"
       node.vm.network "private_network", ip: "192.168.60.#{i}0"
+      #node.vm.network "public_network", ip: "192.168.60.#{i}0"
 
       node.vm.provider "parallels" do |v|
         v.memory = "#{ENV['VAGRANT_SERVER_RAM']}"
@@ -38,6 +40,7 @@ Vagrant.configure(2) do |config|
     config.vm.define "node-client-#{i}" do |node|
       node.vm.hostname = "node-client-#{i}"
       node.vm.network "private_network", ip: "192.168.61.#{i}0"
+      #node.vm.network "public_network", ip: "192.168.61.#{i}0"
 
       node.vm.provider "parallels" do |v|
         v.memory = "#{ENV['VAGRANT_CLIENT_RAM']}"
